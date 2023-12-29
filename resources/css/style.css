@@ -1,0 +1,342 @@
+/* === CUSTOM PROPERTIES === */
+
+:root {
+
+  /* Colors */
+
+--dark-green: 188 54% 19%;
+--brown: 27, 87%, 27%;
+--pink: 350, 71%, 92%;
+--purple: 229, 36%, 74%;
+
+/* old */
+
+  --clr-dark: 230 35% 7%;
+  --clr-light: 231 77% 90%;
+  --clr-white: 0 0% 100%;
+
+  /* Font Sizes */
+
+  --fs-largest: 3.052rem;
+  --fs-larger: 2.441rem;
+  --fs-large: 1.953rem;
+  --fs-medium: 1.563rem;
+  --fs-small: 1.25rem;
+  --fs-smallest: 0.8rem;
+
+  /* Font Families */
+
+--ff-serif: 'Cormorant Garamond', serif;
+--ff-sans: 'Helvetica', sans serif;
+
+}
+
+/* === GLOBAL STYLES === */
+
+body {
+  background-color: hsl( var(--clr-white) );
+  min-height: 100vh;
+  font-family: var(--ff-serif);
+  color: hsl( var(--clr-dark) );
+  font-size: var(--fs-medium);
+  line-height: 1.6;
+  text-rendering: optimizeSpeed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+p {
+  font-weight: 400;
+}
+
+/* === UTILITY CLASSES === */
+
+/* Layout */
+
+.container {
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 60rem;
+}
+
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+
+/* Consistent spacing top and bottom */
+
+/* Select all but first child. */
+/* --flow-spacing is undecleared. */
+/* Insert value for each element. */
+
+.flow > *:not(:first-child){
+  margin-top: var(--flow-spacing);
+  /* outline: 1px solid red; */
+}
+
+.flow > *:not(:last-child){
+  margin-bottom: var(--flow-spacing);
+  /* outline: 1px solid red; */
+}
+
+/* Colors */
+
+.bg-dark { background-color: hsl( var(--clr-dark) );}
+.bg-light { background-color: hsl( var(--clr-light) );}
+.bg-white { background-color: hsl( var(--clr-white) );}
+
+.text-dark { color: hsl( var(--clr-dark) );}
+.text-light { color: hsl( var(--clr-light));}
+.text-white { color: hsl( var(--clr-white) );}
+
+/* Typography */
+
+.ff-serif { font-family: var(--ff-serif); }
+.ff-sans { font-family: var(--ff-sans); }
+
+.uppercase { text-transform: uppercase;}
+
+.fs-largest { font-size: var(--fs-largest); }
+.fs-larger { font-size: var(--fs-larger); }
+.fs-large { font-size: var(--fs-large); }
+.fs-medium { font-size: var(--fs-medium); }
+.fs-small { font-size: var(--fs-small); }
+.fs-smallest { font-size: var(--fs-smallest); }
+
+
+.ls-3 { letter-spacing: 4.75px; }
+.ls-1 { letter-spacing: 2.35px; }
+.ls-2 { letter-spacing: 2.7px; }
+
+/* ===== MINI COMPONENTS ===== */
+
+.numbered-title {
+  font-family: var(--ff-serif);
+  font-size: var(--fs-large);
+  text-transform: uppercase;
+  letter-spacing: 2.35px;
+}
+
+.numbered-title-span {
+  font-family: var(--ff-sans);
+  margin-right: .5rem;
+  color: hsl( var(--clr-dark) / 0.25);
+}
+
+/* ===== COMPONENTS ===== */
+
+.button {
+    position: relative;
+    z-index: 1;
+    display: inline-grid;
+    place-items: center;
+    padding: 2em 2em;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    text-decoration: none;
+}
+
+/* Animations */
+
+.button::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: hsl( var(--clr-light) / .5);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+
+.button:hover::after,
+.button:focus::after {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Navigation */
+
+.main-navigation {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-small);
+  background: hsl( var(--clr-white) / 0.05);
+  --gap: 4rem;
+  --underline-gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-navigation a {
+  text-decoration: none;
+}
+
+.main-navigation a > span {
+  margin-right: .5rem;
+}
+
+.underline-indicators > * {
+  padding: var(--underline-gap, 1rem) 0;
+  border: 0;
+  border-bottom: .2rem solid hsl( var(--clr-light) / 0);
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+    border-color: hsl( var(--clr-light) / .4);
+}
+
+.underline-indicators > .active {
+    color: hsl( var(--clr-dark) / 1);
+    border-color: hsl( var(--clr-light) / 1);
+}
+
+.alternate-navigation {
+  --gap: 4rem;
+}
+
+/* ===== IMPORTS ===== */
+
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:500,400,300');
+
+
+/*============================================================= FOOTER STYLES */
+footer{
+  display: flex;
+  align-items: center;
+  background: azure;
+  padding: 4rem;
+}
+footer img{
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+@media only screen and (min-width: 671px){
+  .mobile-nav{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1111px){
+  .container{
+    width: 100%;
+  }
+  .head, .services, .information, footer{
+    position: relative;
+    top: 0;
+  }
+
+  .banner{
+    height: 22rem;
+  }
+  nav{
+    width: 50%;
+  }
+  .main{
+    margin-right: 2rem;
+    top: 5rem;
+  }
+  .content{
+    font-size: 1.33rem;
+    line-height: 1.2;
+    padding: 1.75rem 4rem;
+  }
+  footer{
+    padding: 4rem 0rem;
+    width: 100%;
+  }
+  footer img{
+    margin-left: 4rem;
+  }
+}
+
+@media only screen and (max-width: 670px){
+  .container{
+    width: 100%;
+  }
+  .head span, footer span{
+    display: none;
+  }
+  h2{
+    text-align: center;
+    padding: 0.5rem 0rem;
+  }
+  p{
+    font-size: 0.77rem;
+  }
+  .main{
+    margin-right: 2rem;
+    top: 5rem;
+  }
+  .nav{
+    display: none;
+  }
+  .mobile-nav{
+    justify-content: flex-end;
+  }
+  .banner{
+    height: 17em;
+    background-position: left ;
+  }
+  .main{
+    margin: 0;
+    top: 9rem;
+  }
+  .content{
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .services{
+    flex-direction: column;
+    margin: 3.77rem;
+  }
+  .service{
+    padding: 0;
+    margin: 1.54rem;
+    height: 5rem;
+  }
+  .service img.paper-icon{
+    margin-bottom: 1rem;
+  }
+  .service2{
+    padding-top: 1rem;
+  }
+  .information{
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+  }
+  .info, h2{
+    width: 100%;
+  }
+  .info{
+    margin: 0;
+    padding-bottom: 4rem;
+  }
+  footer{
+    padding: 4rem 0rem;
+  }
+  footer img{
+    margin: 0 auto;
+  }
+}
